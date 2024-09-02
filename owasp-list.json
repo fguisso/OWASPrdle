@@ -2,6 +2,7 @@
     {
       "id": "A01:2021",
       "name": "Broken Access Control",
+      "link": "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
       "hints": [
         "This category had the most occurrences of CWEs in applications tested.",
         "On average, 3.81% of applications tested had one or more CWEs in this category.",
@@ -13,6 +14,7 @@
     {
       "id": "A02:2021",
       "name": "Cryptographic Failures",
+      "link": "https://owasp.org/Top10/A02_2021-Cryptographic_Failures/",
       "hints": [
         "This category was previously known as 'Sensitive Data Exposure'.",
         "The new name focuses on failures related to cryptography.",
@@ -24,6 +26,7 @@
     {
       "id": "A03:2021",
       "name": "Injection",
+      "link": "https://owasp.org/Top10/A03_2021-Injection/",
       "hints": [
         "94% of applications were tested for some form of this vulnerability.",
         "The maximum incidence rate for this vulnerability was 19%.",
@@ -35,6 +38,7 @@
     {
       "id": "A04:2021",
       "name": "Insecure Design",
+      "link": "https://owasp.org/Top10/A04_2021-Insecure_Design/",
       "hints": [
         "This is a new category for 2021.",
         "It focuses on risks related to design flaws.",
@@ -46,6 +50,7 @@
     {
       "id": "A05:2021",
       "name": "Security Misconfiguration",
+      "link": "https://owasp.org/Top10/A05_2021-Security_Misconfiguration/",
       "hints": [
         "This category moved up from #6 in the previous edition.",
         "90% of applications were tested for some form of this issue.",
@@ -57,6 +62,7 @@
     {
       "id": "A06:2021",
       "name": "Vulnerable and Outdated Components",
+      "link": "https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/",
       "hints": [
         "This category was previously titled 'Using Components with Known Vulnerabilities'.",
         "It moved up from #9 in the 2017 edition.",
@@ -68,6 +74,7 @@
     {
       "id": "A07:2021",
       "name": "Identification and Authentication Failures",
+      "link": "https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/",
       "hints": [
         "This category was previously called 'Broken Authentication'.",
         "It slid down from the second position in the previous edition.",
@@ -79,6 +86,7 @@
     {
       "id": "A08:2021",
       "name": "Software and Data Integrity Failures",
+      "link": "https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/",
       "hints": [
         "This is a new category for 2021.",
         "It focuses on making assumptions related to software updates, critical data, and CI/CD pipelines.",
@@ -90,6 +98,7 @@
     {
       "id": "A09:2021",
       "name": "Security Logging and Monitoring Failures",
+      "link": "https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/",
       "hints": [
         "This category was previously called 'Insufficient Logging & Monitoring'.",
         "It moved up from #10 in the previous edition.",
@@ -101,6 +110,7 @@
     {
       "id": "A10:2021",
       "name": "Server-Side Request Forgery",
+      "link": "https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/",
       "hints": [
         "This category was added based on the Top 10 community survey.",
         "It shows a relatively low incidence rate with above-average testing coverage.",
@@ -112,6 +122,7 @@
     {
         "id": "M01:2024",
         "name": "Improper Credential Usage",
+        "link": "https://owasp.org/www-project-mobile-top-10/2023-risks/m1-improper-credential-usage.html",
         "hints": [
             "This risk involves the insecure handling of credentials, such as hardcoding them in the application.",
             "Developers may mistakenly store sensitive credentials in shared preferences or local storage.",
@@ -123,6 +134,7 @@
     {
         "id": "M02:2024",
         "name": "Inadequate Supply Chain Security",
+        "link": "https://owasp.org/www-project-mobile-top-10/2023-risks/m2-inadequate-supply-chain-security.html",
         "hints": [
             "This risk arises from using vulnerable third-party components in mobile applications.",
             "Compromised supply chains can lead to the introduction of malware or backdoors.",
@@ -134,6 +146,7 @@
     {
         "id": "M03:2024",
         "name": "Insecure Authentication/Authorization",
+        "link": "https://owasp.org/www-project-mobile-top-10/2023-risks/m3-insecure-authentication-authorization.html",
         "hints": [
             "This risk often involves weak authentication mechanisms that attackers can easily bypass.",
             "Inadequate session management can lead to unauthorized access.",
@@ -145,6 +158,7 @@
     {
         "id": "M04:2024",
         "name": "Insufficient Input/Output Validation",
+        "link": "https://owasp.org/www-project-mobile-top-10/2023-risks/m4-insufficient-input-output-validation.html",
         "hints": [
             "This risk involves failing to properly validate user input, leading to injection attacks.",
             "Inadequate output encoding can result in data leakage or script injection.",
@@ -156,6 +170,7 @@
     {
         "id": "M05:2024",
         "name": "Insecure Communication",
+        "link": "https://owasp.org/www-project-mobile-top-10/2023-risks/m5-insecure-communication.html",
         "hints": [
             "This risk involves transmitting sensitive data over unsecured or weakly encrypted channels.",
             "Using outdated SSL/TLS versions can make communications vulnerable to interception.",
@@ -167,6 +182,7 @@
     {
         "id": "M06:2024",
         "name": "Inadequate Privacy Controls",
+        "link": "https://owasp.org/www-project-mobile-top-10/2023-risks/m6-inadequate-privacy-controls.html",
         "hints": [
             "This risk involves the mishandling of personal data, leading to privacy violations.",
             "Lack of proper consent management can result in regulatory compliance issues.",
@@ -178,6 +194,7 @@
     {
         "id": "M07:2024",
         "name": "Insufficient Binary Protections",
+        "link": "https://owasp.org/www-project-mobile-top-10/2023-risks/m7-insufficient-binary-protection.html",
         "hints": [
             "This risk involves a lack of protections against reverse engineering and tampering.",
             "Attackers may exploit vulnerabilities in binaries to inject malicious code.",
@@ -189,6 +206,7 @@
     {
         "id": "M08:2024",
         "name": "Security Misconfiguration",
+        "link": "https://owasp.org/www-project-mobile-top-10/2023-risks/m8-security-misconfiguration.html",
         "hints": [
             "This risk arises from insecure default configurations or exposed debugging information.",
             "Leaving unnecessary services enabled can increase the attack surface.",
@@ -200,6 +218,7 @@
     {
         "id": "M09:2024",
         "name": "Insecure Data Storage",
+        "link": "https://owasp.org/www-project-mobile-top-10/2023-risks/m9-insecure-data-storage.html",
         "hints": [
             "This risk involves storing sensitive data in an unencrypted or poorly protected manner.",
             "Data stored in cleartext can be easily accessed if the device is compromised.",
@@ -211,6 +230,7 @@
     {
         "id": "M10:2024",
         "name": "Insufficient Cryptography",
+        "link": "https://owasp.org/www-project-mobile-top-10/2023-risks/m10-insufficient-cryptography.html",
         "hints": [
             "This risk involves using outdated or weak cryptographic algorithms and keys.",
             "Failing to use secure key management practices can compromise data security.",
