@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OWASP Top 10 Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .game-container {
+            background-color: #2d2d2d;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        .hint-card {
+            background-color: #3d3d3d;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: calc(100% - 22px);
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #feedback {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        #previous-guesses {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .wrong-guess {
+            color: #ff6b6b;
+        }
+        .win {
+            color: #4CAF50;
+        }
+        .lose {
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>OWASP Top 10 Guessing Game</h1>
+        <div class="hint-card">
+            <h3>Hints:</h3>
+            <div id="hints"></div>
+        </div>
+        <input type="text" id="guess-input" list="owasp-categories" placeholder="Enter your guess">
+        <datalist id="owasp-categories"></datalist>
+        <button id="submit-guess">Submit Guess</button>
+        <button id="reveal-hint">Reveal Next Hint</button>
+        <button id="new-game" style="display: none;">Start New Game</button>
+        <p id="feedback"></p>
+        <p>Hints Revealed: <span id="hints-count">0</span>/5</p>
+        <p>Score: <span id="score">1000</span></p>
+        <div id="previous-guesses"></div>
+    </div>
+
+    <script type="module">
+        // The gameData variable will be populated with the JSON data
+        const gameData = fetch('./owasp-list.json').data();
+
+
+        let currentCategory;
+        let revealedHints = 0;
+        let score = 1000;
+        let previousGuesses = [];
+
+        function populateAutocomplete() {
+            const datalist = document.getElementById('owasp-categories');
+            gameData.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.name;
+                datalist.appendChild(option);
+            });
+        }
+
+        function startNewRound() {
+            currentCategory = gameData[Math.floor(Math.random() * gameData.length)];
+            revealedHints = 0;
+            document.getElementById('hints').innerHTML = '';
+            document.getElementById('hints-count').textContent = '0';
+            document.getElementById('feedback').textContent = '';
+            document.getElementById('guess-input').value = '';
+            document.getElementById('reveal-hint').disabled = false;
+            document.getElementById('submit-guess').disabled = false;
+            document.getElementById('new-game').style.display = 'none';
+            previousGuesses = [];
+            updatePreviousGuesses();
+        }
+
+        function revealHint() {
+            if (revealedHints < 5) {
+                const hintElement = document.createElement('p');
+                hintElement.textContent = currentCategory.hints[revealedHints];
+                document.getElementById('hints').appendChild(hintElement);
+                revealedHints++;
+                document.getElementById('hints-count').textContent = revealedHints;
+                score -= 50;
+                updateScore();
+            }
+            if (revealedHints === 5) {
+                document.getElementById('reveal-hint').disabled = true;
+            }
+        }
+
+        function checkGuess() {
+            const guess = document.getElementById('guess-input').value.trim();
+            const correctAnswer = currentCategory.name;
+            const feedback = document.getElementById('feedback');
+
+            if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = 'Correct! Well done!';
+                feedback.className = 'win';
+                document.getElementById('submit-guess').disabled = true;
+                document.getElementById('reveal-hint').disabled = true;
+                document.getElementById('new-game').style.display = 'block';
+            } else {
+                feedback.textContent = 'Incorrect. Try again or reveal another hint.';
+                feedback.className = 'lose';
+                score -= 100;
+                updateScore();
+                previousGuesses.push(guess);
+                updatePreviousGuesses();
+            }
+            document.getElementById('guess-input').value = '';
+        }
+
+        function updateScore() {
+            document.getElementById('score').textContent = score;
+        }
+
+        function updatePreviousGuesses() {
+            const guessesElement = document.getElementById('previous-guesses');
+            guessesElement.innerHTML = '<h3>Previous Guesses:</h3>';
+            previousGuesses.forEach(guess => {
+                const guessElement = document.createElement('p');
+                guessElement.textContent = guess;
+                guessElement.className = 'wrong-guess';
+                guessesElement.appendChild(guessElement);
+            });
+        }
+
+        document.getElementById('reveal-hint').addEventListener('click', revealHint);
+        document.getElementById('submit-guess').addEventListener('click', checkGuess);
+        document.getElementById('new-game').addEventListener('click', startNewRound);
+
+        // Initialize the game
+        populateAutocomplete();
+        startNewRound();
+    </script>
+</body>
+</html>

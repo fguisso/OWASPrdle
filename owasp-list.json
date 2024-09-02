@@ -1,0 +1,112 @@
+[
+    {
+      "id": "A01:2021",
+      "name": "Broken Access Control",
+      "hints": [
+        "This category had the most occurrences of CWEs in applications tested.",
+        "On average, 3.81% of applications tested had one or more CWEs in this category.",
+        "This risk category had more than 318k occurrences of CWEs.",
+        "34 CWEs are mapped to this category.",
+        "This category moved up from the fifth position in the previous edition."
+      ]
+    },
+    {
+      "id": "A02:2021",
+      "name": "Cryptographic Failures",
+      "hints": [
+        "This category was previously known as 'Sensitive Data Exposure'.",
+        "The new name focuses on failures related to cryptography.",
+        "This category often leads to sensitive data exposure or system compromise.",
+        "It shifted up one position from the previous edition.",
+        "The previous name was considered too broad and a symptom rather than a root cause."
+      ]
+    },
+    {
+      "id": "A03:2021",
+      "name": "Injection",
+      "hints": [
+        "94% of applications were tested for some form of this vulnerability.",
+        "The maximum incidence rate for this vulnerability was 19%.",
+        "The average incidence rate was 3.37%.",
+        "33 CWEs are mapped to this category.",
+        "Cross-site Scripting is now part of this category in this edition."
+      ]
+    },
+    {
+      "id": "A04:2021",
+      "name": "Insecure Design",
+      "hints": [
+        "This is a new category for 2021.",
+        "It focuses on risks related to design flaws.",
+        "This category emphasizes the need for threat modeling and secure design patterns.",
+        "An insecure design cannot be fixed by perfect implementation alone.",
+        "This category represents a shift towards 'moving left' in the development process."
+      ]
+    },
+    {
+      "id": "A05:2021",
+      "name": "Security Misconfiguration",
+      "hints": [
+        "This category moved up from #6 in the previous edition.",
+        "90% of applications were tested for some form of this issue.",
+        "The average incidence rate was 4.5%.",
+        "Over 208k occurrences of CWEs were mapped to this risk category.",
+        "The former category for XML External Entities (XXE) is now part of this risk category."
+      ]
+    },
+    {
+      "id": "A06:2021",
+      "name": "Vulnerable and Outdated Components",
+      "hints": [
+        "This category was previously titled 'Using Components with Known Vulnerabilities'.",
+        "It moved up from #9 in the 2017 edition.",
+        "This is a known issue that's difficult to test and assess risk for.",
+        "It's the only category without CVEs mapped to the included CWEs.",
+        "Default exploit and impact weights of 5.0 are factored into the scores for this category."
+      ]
+    },
+    {
+      "id": "A07:2021",
+      "name": "Identification and Authentication Failures",
+      "hints": [
+        "This category was previously called 'Broken Authentication'.",
+        "It slid down from the second position in the previous edition.",
+        "This category now includes CWEs more related to identification failures.",
+        "The increased availability of standardized frameworks seems to be helping mitigate these issues.",
+        "Despite sliding down, this category remains an integral part of the Top 10."
+      ]
+    },
+    {
+      "id": "A08:2021",
+      "name": "Software and Data Integrity Failures",
+      "hints": [
+        "This is a new category for 2021.",
+        "It focuses on making assumptions related to software updates, critical data, and CI/CD pipelines.",
+        "This category had one of the highest weighted impacts from CVE/CVSS data.",
+        "10 CWEs are mapped to this category.",
+        "The previous A8:2017-Insecure Deserialization is now part of this larger category."
+      ]
+    },
+    {
+      "id": "A09:2021",
+      "name": "Security Logging and Monitoring Failures",
+      "hints": [
+        "This category was previously called 'Insufficient Logging & Monitoring'.",
+        "It moved up from #10 in the previous edition.",
+        "This category is challenging to test for.",
+        "Failures in this category can directly impact visibility, incident alerting, and forensics.",
+        "This category isn't well represented in the CVE/CVSS data."
+      ]
+    },
+    {
+      "id": "A10:2021",
+      "name": "Server-Side Request Forgery",
+      "hints": [
+        "This category was added based on the Top 10 community survey.",
+        "It shows a relatively low incidence rate with above-average testing coverage.",
+        "This vulnerability has above-average ratings for Exploit and Impact potential.",
+        "The security community emphasized the importance of this category.",
+        "This category represents an emerging threat that may not be fully represented in current data."
+      ]
+    }
+  ]
