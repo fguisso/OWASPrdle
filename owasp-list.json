@@ -108,5 +108,116 @@
         "The security community emphasized the importance of this category.",
         "This category represents an emerging threat that may not be fully represented in current data."
       ]
+    },
+    {
+        "id": "M01:2024",
+        "name": "Improper Credential Usage",
+        "hints": [
+            "This risk involves the insecure handling of credentials, such as hardcoding them in the application.",
+            "Developers may mistakenly store sensitive credentials in shared preferences or local storage.",
+            "Using weak or easily guessable passwords can lead to unauthorized access.",
+            "Attackers might exploit improperly stored credentials to gain elevated privileges.",
+            "Regularly rotating credentials and avoiding hardcoding them can mitigate this risk."
+        ]
+    },
+    {
+        "id": "M02:2024",
+        "name": "Inadequate Supply Chain Security",
+        "hints": [
+            "This risk arises from using vulnerable third-party components in mobile applications.",
+            "Compromised supply chains can lead to the introduction of malware or backdoors.",
+            "Regular updates and thorough vetting of third-party libraries can mitigate this risk.",
+            "Using components with known vulnerabilities can put the entire app at risk.",
+            "Supply chain attacks have become increasingly common in recent years."
+        ]
+    },
+    {
+        "id": "M03:2024",
+        "name": "Insecure Authentication/Authorization",
+        "hints": [
+            "This risk often involves weak authentication mechanisms that attackers can easily bypass.",
+            "Inadequate session management can lead to unauthorized access.",
+            "Using outdated authentication protocols can expose the application to attacks.",
+            "Ensuring that strong multi-factor authentication is implemented can reduce this risk.",
+            "Improperly configured authorization can allow users to access unauthorized resources."
+        ]
+    },
+    {
+        "id": "M04:2024",
+        "name": "Insufficient Input/Output Validation",
+        "hints": [
+            "This risk involves failing to properly validate user input, leading to injection attacks.",
+            "Inadequate output encoding can result in data leakage or script injection.",
+            "Implementing proper input sanitation techniques can help mitigate this risk.",
+            "User inputs should be considered untrusted and validated against strict criteria.",
+            "Failure to handle input validation can lead to various types of injection attacks."
+        ]
+    },
+    {
+        "id": "M05:2024",
+        "name": "Insecure Communication",
+        "hints": [
+            "This risk involves transmitting sensitive data over unsecured or weakly encrypted channels.",
+            "Using outdated SSL/TLS versions can make communications vulnerable to interception.",
+            "Data transmitted over public networks should always be encrypted using strong protocols.",
+            "Failure to verify server certificates can result in man-in-the-middle attacks.",
+            "Encrypting both data in transit and at rest is crucial for mobile security."
+        ]
+    },
+    {
+        "id": "M06:2024",
+        "name": "Inadequate Privacy Controls",
+        "hints": [
+            "This risk involves the mishandling of personal data, leading to privacy violations.",
+            "Lack of proper consent management can result in regulatory compliance issues.",
+            "Applications should limit data collection to the minimum necessary for functionality.",
+            "Storing excessive or unnecessary personal data increases the risk of breaches.",
+            "Implementing robust data minimization and retention policies can mitigate this risk."
+        ]
+    },
+    {
+        "id": "M07:2024",
+        "name": "Insufficient Binary Protections",
+        "hints": [
+            "This risk involves a lack of protections against reverse engineering and tampering.",
+            "Attackers may exploit vulnerabilities in binaries to inject malicious code.",
+            "Implementing obfuscation and binary protection techniques can mitigate this risk.",
+            "Mobile applications should be hardened to resist reverse engineering attempts.",
+            "Binary protections can prevent attackers from modifying application code or logic."
+        ]
+    },
+    {
+        "id": "M08:2024",
+        "name": "Security Misconfiguration",
+        "hints": [
+            "This risk arises from insecure default configurations or exposed debugging information.",
+            "Leaving unnecessary services enabled can increase the attack surface.",
+            "Ensuring that only necessary permissions and services are enabled can reduce this risk.",
+            "Inadequate error handling can expose sensitive system information to attackers.",
+            "Regularly auditing and updating configurations can prevent security misconfigurations."
+        ]
+    },
+    {
+        "id": "M09:2024",
+        "name": "Insecure Data Storage",
+        "hints": [
+            "This risk involves storing sensitive data in an unencrypted or poorly protected manner.",
+            "Data stored in cleartext can be easily accessed if the device is compromised.",
+            "Using secure storage mechanisms provided by the platform can mitigate this risk.",
+            "Applications should avoid storing sensitive data on the device unless necessary.",
+            "Insecure storage can lead to unauthorized access and data breaches."
+        ]
+    },
+    {
+        "id": "M10:2024",
+        "name": "Insufficient Cryptography",
+        "hints": [
+            "This risk involves using outdated or weak cryptographic algorithms and keys.",
+            "Failing to use secure key management practices can compromise data security.",
+            "Ensuring the use of up-to-date cryptographic standards can mitigate this risk.",
+            "Improper implementation of cryptographic libraries can result in vulnerabilities.",
+            "Weak or hardcoded cryptographic keys can easily be compromised by attackers."
+        ]
     }
-  ]
+]
+
