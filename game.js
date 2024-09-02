@@ -1,19 +1,24 @@
-// Fetch the game data from the external JSON file
+// game.js
+
+let gameData = [];
+let currentCategory;
+let revealedHints = 0;
+let score = 1000;
+let previousGuesses = [];
+
+// Load the JSON data asynchronously
 async function fetchGameData() {
-    const response = await fetch('./owasp-list.json');
-    const data = await response.json();
-    return data;
+    try {
+        const response = await fetch('https://guisso.dev/OWASPrdle/owasp-list.json');
+        gameData = await response.json();
+        populateAutocomplete();
+        startNewRound();
+    } catch (error) {
+        console.error('Failed to fetch game data:', error);
+    }
 }
 
-// Initialize the game
-async function initGame() {
-    const gameData = await fetchGameData();
-    populateAutocomplete(gameData);
-    startNewRound(gameData);
-}
-
-// Populate the datalist for autocomplete
-function populateAutocomplete(gameData) {
+function populateAutocomplete() {
     const datalist = document.getElementById('owasp-categories');
     gameData.forEach(category => {
         const option = document.createElement('option');
@@ -22,13 +27,9 @@ function populateAutocomplete(gameData) {
     });
 }
 
-// Start a new round of the game
-function startNewRound(gameData) {
-    const currentCategory = gameData[Math.floor(Math.random() * gameData.length)];
-    let revealedHints = 0;
-    let score = 1000;
-    const previousGuesses = [];
-
+function startNewRound() {
+    currentCategory = gameData[Math.floor(Math.random() * gameData.length)];
+    revealedHints = 0;
     document.getElementById('hints').innerHTML = '';
     document.getElementById('hints-count').textContent = '0';
     document.getElementById('feedback').textContent = '';
@@ -36,17 +37,11 @@ function startNewRound(gameData) {
     document.getElementById('reveal-hint').disabled = false;
     document.getElementById('submit-guess').disabled = false;
     document.getElementById('new-game').style.display = 'none';
-
-    updatePreviousGuesses(previousGuesses);
-
-    // Event listeners for buttons
-    document.getElementById('reveal-hint').addEventListener('click', () => revealHint(currentCategory, revealedHints, score));
-    document.getElementById('submit-guess').addEventListener('click', () => checkGuess(currentCategory, score, previousGuesses));
-    document.getElementById('new-game').addEventListener('click', () => startNewRound(gameData));
+    previousGuesses = [];
+    updatePreviousGuesses();
 }
 
-// Reveal the next hint
-function revealHint(currentCategory, revealedHints, score) {
+function revealHint() {
     if (revealedHints < 5) {
         const hintElement = document.createElement('p');
         hintElement.textContent = currentCategory.hints[revealedHints];
@@ -54,19 +49,19 @@ function revealHint(currentCategory, revealedHints, score) {
         revealedHints++;
         document.getElementById('hints-count').textContent = revealedHints;
         score -= 50;
-        updateScore(score);
+        updateScore();
     }
     if (revealedHints === 5) {
         document.getElementById('reveal-hint').disabled = true;
     }
 }
 
-// Check the player's guess
-function checkGuess(currentCategory, score, previousGuesses) {
+function checkGuess() {
     const guess = document.getElementById('guess-input').value.trim();
+    const correctAnswer = currentCategory.name;
     const feedback = document.getElementById('feedback');
 
-    if (guess.toLowerCase() === currentCategory.name.toLowerCase()) {
+    if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
         // Display the correct guess with a clickable link
         feedback.innerHTML = `Correct! Well done! Learn more about it <a href="${currentCategory.link}" target="_blank">${currentCategory.id}</a>`;
         feedback.className = 'win';
@@ -77,20 +72,18 @@ function checkGuess(currentCategory, score, previousGuesses) {
         feedback.textContent = 'Incorrect. Try again or reveal another hint.';
         feedback.className = 'lose';
         score -= 100;
-        updateScore(score);
+        updateScore();
         previousGuesses.push(guess);
-        updatePreviousGuesses(previousGuesses);
+        updatePreviousGuesses();
     }
     document.getElementById('guess-input').value = '';
 }
 
-// Update the score display
-function updateScore(score) {
+function updateScore() {
     document.getElementById('score').textContent = score;
 }
 
-// Update the display of previous guesses
-function updatePreviousGuesses(previousGuesses) {
+function updatePreviousGuesses() {
     const guessesElement = document.getElementById('previous-guesses');
     guessesElement.innerHTML = '<h3>Previous Guesses:</h3>';
     previousGuesses.forEach(guess => {
@@ -101,6 +94,11 @@ function updatePreviousGuesses(previousGuesses) {
     });
 }
 
-// Start the game initialization
-initGame();
+// Event listeners
+document.getElementById('reveal-hint').addEventListener('click', revealHint);
+document.getElementById('submit-guess').addEventListener('click', checkGuess);
+document.getElementById('new-game').addEventListener('click', startNewRound);
+
+// Initialize the game after loading the data
+fetchGameData();
 

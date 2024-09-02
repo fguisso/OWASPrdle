@@ -1,123 +1,123 @@
 [
     {
-      "id": "A01:2021",
-      "name": "Broken Access Control",
-      "link": "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
-      "hints": [
-        "This category had the most occurrences of CWEs in applications tested.",
-        "On average, 3.81% of applications tested had one or more CWEs in this category.",
-        "This risk category had more than 318k occurrences of CWEs.",
-        "34 CWEs are mapped to this category.",
-        "This category moved up from the fifth position in the previous edition."
-      ]
+        "id": "A01:2021",
+        "name": "Broken Access Control",
+        "link": "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
+        "hints": [
+            "This category had the most occurrences of CWEs in applications tested.",
+            "On average, 3.81% of applications tested had one or more CWEs in this category.",
+            "This risk category had more than 318k occurrences of CWEs.",
+            "34 CWEs are mapped to this category.",
+            "This category moved up from the fifth position in the previous edition."
+        ]
     },
     {
-      "id": "A02:2021",
-      "name": "Cryptographic Failures",
-      "link": "https://owasp.org/Top10/A02_2021-Cryptographic_Failures/",
-      "hints": [
-        "This category was previously known as 'Sensitive Data Exposure'.",
-        "The new name focuses on failures related to cryptography.",
-        "This category often leads to sensitive data exposure or system compromise.",
-        "It shifted up one position from the previous edition.",
-        "The previous name was considered too broad and a symptom rather than a root cause."
-      ]
+        "id": "A02:2021",
+        "name": "Cryptographic Failures",
+        "link": "https://owasp.org/Top10/A02_2021-Cryptographic_Failures/",
+        "hints": [
+            "This category was previously known as 'Sensitive Data Exposure'.",
+            "The new name focuses on failures related to cryptography.",
+            "This category often leads to sensitive data exposure or system compromise.",
+            "It shifted up one position from the previous edition.",
+            "The previous name was considered too broad and a symptom rather than a root cause."
+        ]
     },
     {
-      "id": "A03:2021",
-      "name": "Injection",
-      "link": "https://owasp.org/Top10/A03_2021-Injection/",
-      "hints": [
-        "94% of applications were tested for some form of this vulnerability.",
-        "The maximum incidence rate for this vulnerability was 19%.",
-        "The average incidence rate was 3.37%.",
-        "33 CWEs are mapped to this category.",
-        "Cross-site Scripting is now part of this category in this edition."
-      ]
+        "id": "A03:2021",
+        "name": "Injection",
+        "link": "https://owasp.org/Top10/A03_2021-Injection/",
+        "hints": [
+            "94% of applications were tested for some form of this vulnerability.",
+            "The maximum incidence rate for this vulnerability was 19%.",
+            "The average incidence rate was 3.37%.",
+            "33 CWEs are mapped to this category.",
+            "Cross-site Scripting is now part of this category in this edition."
+        ]
     },
     {
-      "id": "A04:2021",
-      "name": "Insecure Design",
-      "link": "https://owasp.org/Top10/A04_2021-Insecure_Design/",
-      "hints": [
-        "This is a new category for 2021.",
-        "It focuses on risks related to design flaws.",
-        "This category emphasizes the need for threat modeling and secure design patterns.",
-        "An insecure design cannot be fixed by perfect implementation alone.",
-        "This category represents a shift towards 'moving left' in the development process."
-      ]
+        "id": "A04:2021",
+        "name": "Insecure Design",
+        "link": "https://owasp.org/Top10/A04_2021-Insecure_Design/",
+        "hints": [
+            "This is a new category for 2021.",
+            "It focuses on risks related to design flaws.",
+            "This category emphasizes the need for threat modeling and secure design patterns.",
+            "An insecure design cannot be fixed by perfect implementation alone.",
+            "This category represents a shift towards 'moving left' in the development process."
+        ]
     },
     {
-      "id": "A05:2021",
-      "name": "Security Misconfiguration",
-      "link": "https://owasp.org/Top10/A05_2021-Security_Misconfiguration/",
-      "hints": [
-        "This category moved up from #6 in the previous edition.",
-        "90% of applications were tested for some form of this issue.",
-        "The average incidence rate was 4.5%.",
-        "Over 208k occurrences of CWEs were mapped to this risk category.",
-        "The former category for XML External Entities (XXE) is now part of this risk category."
-      ]
+        "id": "A05:2021",
+        "name": "Security Misconfiguration",
+        "link": "https://owasp.org/Top10/A05_2021-Security_Misconfiguration/",
+        "hints": [
+            "This category moved up from #6 in the previous edition.",
+            "90% of applications were tested for some form of this issue.",
+            "The average incidence rate was 4.5%.",
+            "Over 208k occurrences of CWEs were mapped to this risk category.",
+            "The former category for XML External Entities (XXE) is now part of this risk category."
+        ]
     },
     {
-      "id": "A06:2021",
-      "name": "Vulnerable and Outdated Components",
-      "link": "https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/",
-      "hints": [
-        "This category was previously titled 'Using Components with Known Vulnerabilities'.",
-        "It moved up from #9 in the 2017 edition.",
-        "This is a known issue that's difficult to test and assess risk for.",
-        "It's the only category without CVEs mapped to the included CWEs.",
-        "Default exploit and impact weights of 5.0 are factored into the scores for this category."
-      ]
+        "id": "A06:2021",
+        "name": "Vulnerable and Outdated Components",
+        "link": "https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/",
+        "hints": [
+            "This category was previously titled 'Using Components with Known Vulnerabilities'.",
+            "It moved up from #9 in the 2017 edition.",
+            "This is a known issue that's difficult to test and assess risk for.",
+            "It's the only category without CVEs mapped to the included CWEs.",
+            "Default exploit and impact weights of 5.0 are factored into the scores for this category."
+        ]
     },
     {
-      "id": "A07:2021",
-      "name": "Identification and Authentication Failures",
-      "link": "https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/",
-      "hints": [
-        "This category was previously called 'Broken Authentication'.",
-        "It slid down from the second position in the previous edition.",
-        "This category now includes CWEs more related to identification failures.",
-        "The increased availability of standardized frameworks seems to be helping mitigate these issues.",
-        "Despite sliding down, this category remains an integral part of the Top 10."
-      ]
+        "id": "A07:2021",
+        "name": "Identification and Authentication Failures",
+        "link": "https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/",
+        "hints": [
+            "This category was previously called 'Broken Authentication'.",
+            "It slid down from the second position in the previous edition.",
+            "This category now includes CWEs more related to identification failures.",
+            "The increased availability of standardized frameworks seems to be helping mitigate these issues.",
+            "Despite sliding down, this category remains an integral part of the Top 10."
+        ]
     },
     {
-      "id": "A08:2021",
-      "name": "Software and Data Integrity Failures",
-      "link": "https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/",
-      "hints": [
-        "This is a new category for 2021.",
-        "It focuses on making assumptions related to software updates, critical data, and CI/CD pipelines.",
-        "This category had one of the highest weighted impacts from CVE/CVSS data.",
-        "10 CWEs are mapped to this category.",
-        "The previous A8:2017-Insecure Deserialization is now part of this larger category."
-      ]
+        "id": "A08:2021",
+        "name": "Software and Data Integrity Failures",
+        "link": "https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/",
+        "hints": [
+            "This is a new category for 2021.",
+            "It focuses on making assumptions related to software updates, critical data, and CI/CD pipelines.",
+            "This category had one of the highest weighted impacts from CVE/CVSS data.",
+            "10 CWEs are mapped to this category.",
+            "The previous A8:2017-Insecure Deserialization is now part of this larger category."
+        ]
     },
     {
-      "id": "A09:2021",
-      "name": "Security Logging and Monitoring Failures",
-      "link": "https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/",
-      "hints": [
-        "This category was previously called 'Insufficient Logging & Monitoring'.",
-        "It moved up from #10 in the previous edition.",
-        "This category is challenging to test for.",
-        "Failures in this category can directly impact visibility, incident alerting, and forensics.",
-        "This category isn't well represented in the CVE/CVSS data."
-      ]
+        "id": "A09:2021",
+        "name": "Security Logging and Monitoring Failures",
+        "link": "https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/",
+        "hints": [
+            "This category was previously called 'Insufficient Logging & Monitoring'.",
+            "It moved up from #10 in the previous edition.",
+            "This category is challenging to test for.",
+            "Failures in this category can directly impact visibility, incident alerting, and forensics.",
+            "This category isn't well represented in the CVE/CVSS data."
+        ]
     },
     {
-      "id": "A10:2021",
-      "name": "Server-Side Request Forgery",
-      "link": "https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/",
-      "hints": [
-        "This category was added based on the Top 10 community survey.",
-        "It shows a relatively low incidence rate with above-average testing coverage.",
-        "This vulnerability has above-average ratings for Exploit and Impact potential.",
-        "The security community emphasized the importance of this category.",
-        "This category represents an emerging threat that may not be fully represented in current data."
-      ]
+        "id": "A10:2021",
+        "name": "Server-Side Request Forgery",
+        "link": "https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/",
+        "hints": [
+            "This category was added based on the Top 10 community survey.",
+            "It shows a relatively low incidence rate with above-average testing coverage.",
+            "This vulnerability has above-average ratings for Exploit and Impact potential.",
+            "The security community emphasized the importance of this category.",
+            "This category represents an emerging threat that may not be fully represented in current data."
+        ]
     },
     {
         "id": "M01:2024",
@@ -238,6 +238,125 @@
             "Improper implementation of cryptographic libraries can result in vulnerabilities.",
             "Weak or hardcoded cryptographic keys can easily be compromised by attackers."
         ]
+    },
+    {
+        "id": "CICD-SEC-1",
+        "name": "Insufficient Flow Control Mechanisms",
+        "hints": [
+            "This risk involves inadequate checks or controls on the flow of CI/CD pipelines.",
+            "Without proper flow control, malicious changes can propagate unchecked.",
+            "This category highlights the need for defined approval processes.",
+            "It's crucial to have proper segregation of duties in pipeline stages.",
+            "Monitoring and alerting are essential to detect unauthorized changes."
+        ],
+        "link": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-01-Insufficient-Flow-Control-Mechanisms"
+    },
+    {
+        "id": "CICD-SEC-2",
+        "name": "Inadequate Identity and Access Management",
+        "hints": [
+            "This risk refers to insufficient control over who can access CI/CD systems.",
+            "Proper identity management helps prevent unauthorized access.",
+            "Multi-factor authentication is a key measure to mitigate this risk.",
+            "The risk increases when access permissions are overly permissive.",
+            "Auditing user activities can help identify potential misuse."
+        ],
+        "link": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-02-Inadequate-Identity-And-Access-Management"
+    },
+    {
+        "id": "CICD-SEC-3",
+        "name": "Dependency Chain Abuse",
+        "hints": [
+            "This risk involves exploiting dependencies within CI/CD pipelines.",
+            "Compromised dependencies can lead to the execution of malicious code.",
+            "Regularly updating and verifying dependencies is critical.",
+            "Dependency confusion attacks exploit misconfigurations in package managers.",
+            "Using signed dependencies can help mitigate this risk."
+        ],
+        "link": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-03-Dependency-Chain-Abuse"
+    },
+    {
+        "id": "CICD-SEC-4",
+        "name": "Poisoned Pipeline Execution (PPE)",
+        "hints": [
+            "PPE occurs when an attacker injects malicious steps into CI/CD pipelines.",
+            "Unauthorized access to pipeline configuration is often the cause.",
+            "Pipeline steps should be reviewed and audited regularly.",
+            "Isolation of pipeline environments can help mitigate PPE risks.",
+            "Maintaining version control over pipeline scripts adds security."
+        ],
+        "link": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-04-Poisoned-Pipeline-Execution"
+    },
+    {
+        "id": "CICD-SEC-5",
+        "name": "Insufficient PBAC (Pipeline-Based Access Controls)",
+        "hints": [
+            "PBAC refers to managing who can initiate and modify pipelines.",
+            "Lack of PBAC can lead to unauthorized changes in pipeline executions.",
+            "Only authorized personnel should have access to modify pipelines.",
+            "Pipeline roles and responsibilities should be clearly defined.",
+            "Audit trails are crucial to track changes in pipeline configurations."
+        ],
+        "link": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-05-Insufficient-PBAC"
+    },
+    {
+        "id": "CICD-SEC-6",
+        "name": "Insufficient Credential Hygiene",
+        "hints": [
+            "This risk involves improper management of credentials within pipelines.",
+            "Hardcoded secrets and environment variables can be exploited if exposed.",
+            "Secrets management solutions can help mitigate this risk.",
+            "Regularly rotating credentials adds an extra layer of security.",
+            "Monitoring for credential misuse is key to preventing breaches."
+        ],
+        "link": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-06-Insufficient-Credential-Hygiene"
+    },
+    {
+        "id": "CICD-SEC-7",
+        "name": "Insecure System Configuration",
+        "hints": [
+            "Insecure configurations can lead to vulnerabilities in CI/CD systems.",
+            "Default settings should be changed to more secure configurations.",
+            "Misconfigured tools or services may expose sensitive information.",
+            "Configuration management and automation help maintain secure settings.",
+            "Regular security audits can identify and rectify misconfigurations."
+        ],
+        "link": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-07-Insecure-System-Configuration"
+    },
+    {
+        "id": "CICD-SEC-8",
+        "name": "Ungoverned Usage of 3rd Party Services",
+        "hints": [
+            "Using third-party services without proper governance can introduce risks.",
+            "Third-party services should be assessed for security before integration.",
+            "Regularly review third-party access and permissions.",
+            "Establish contracts with third-party providers that include security clauses.",
+            "Monitor third-party service activities for unusual behavior."
+        ],
+        "link": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-08-Ungoverned-Usage-of-3rd-Party-Services"
+    },
+    {
+        "id": "CICD-SEC-9",
+        "name": "Improper Artifact Integrity Validation",
+        "hints": [
+            "Artifacts not properly validated can lead to compromised deployments.",
+            "Ensure artifacts are signed and checksums are verified.",
+            "Automated integrity checks should be part of the deployment process.",
+            "Secure storage of artifacts helps maintain integrity.",
+            "Only authorized personnel should have access to deploy artifacts."
+        ],
+        "link": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-09-Improper-Artifact-Integrity-Validation"
+    },
+    {
+        "id": "CICD-SEC-10",
+        "name": "Insufficient Logging and Visibility",
+        "hints": [
+            "Without proper logging, detecting and responding to incidents is challenging.",
+            "Logs should be centralized and protected from tampering.",
+            "Set up alerts for critical events and anomalies in the CI/CD pipeline.",
+            "Ensure logs include sufficient detail to trace actions.",
+            "Regularly review and maintain logging configurations."
+        ],
+        "link": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-10-Insufficient-Logging-And-Visibility"
     }
 ]
-
