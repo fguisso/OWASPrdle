@@ -478,5 +478,125 @@
             "Attackers may exploit weaknesses in integrated third-party services to gain unauthorized access or perform malicious actions.",
             "Implementing comprehensive security measures, including input validation and secure API consumption practices, can help mitigate the risks of unsafe API consumption."
         ]
+    },
+    {
+        "id": "LLM01",
+        "name": "Prompt Injection",
+        "link": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+        "hints": [
+            "This manipulates a large language model (LLM) through crafty inputs, causing unintended actions by the LLM.",
+            "Direct injections overwrite system prompts, while indirect ones manipulate inputs from external sources.",
+            "Direct Prompt Injections, also known as 'jailbreaking', occur when a malicious user overwrites or reveals the underlying system prompt.",
+            "Indirect Prompt Injections occur when an LLM accepts input from external sources that can be controlled by an attacker, such as websites or files.",
+            "Enforce privilege control on LLM access to backend systems and add a human in the loop for extended functionality."
+        ]
+    },
+    {
+        "id": "LLM02",
+        "name": "Insecure Output Handling",
+        "link": "https://genai.owasp.org/llmrisk/llm02-insecure-output-handling/",
+        "hints": [
+            "This vulnerability occurs when an LLM output is accepted without scrutiny, exposing backend systems.",
+            "Misuse may lead to severe consequences like XSS, CSRF, SSRF, privilege escalation, or remote code execution.",
+            "Treat the model as any other user, adopting a zero-trust approach, and apply proper input validation on responses coming from the model to backend functions.",
+            "Follow the OWASP ASVS (Application Security Verification Standard) guidelines to ensure effective input validation and sanitization.",
+            "Encode model output back to users to mitigate undesired code execution by JavaScript or Markdown."
+        ]
+    },
+    {
+        "id": "LLM03",
+        "name": "Training Data Poisoning",
+        "link": "https://genai.owasp.org/llmrisk/llm03-training-data-poisoning/",
+        "hints": [
+            "This involves tampering with pre-training data or data involved within the fine-tuning or embedding processes to introduce vulnerabilities, backdoors or biases.",
+            "Poisoned information may be surfaced to users or create other risks like performance degradation, downstream software exploitation and reputational damage.",
+            "Verify the supply chain of the training data, especially when sourced externally, and maintain attestations via the 'ML-BOM' (Machine Learning Bill of Materials) methodology.",
+            "Verify the correct legitimacy of targeted data sources and data contained obtained during both the pre-training, fine-tuning and embedding stages.",
+            "Use strict vetting or input filters for specific training data or categories of data sources to control volume of falsified data."
+        ]
+    },
+    {
+        "id": "LLM04",
+        "name": "Model Denial of Service",
+        "link": "https://genai.owasp.org/llmrisk/llm04-model-denial-of-service/",
+        "hints": [
+            "Attackers cause resource-heavy operations on LLMs, leading to service degradation or high costs.",
+            "The vulnerability is magnified due to the resource-intensive nature of LLMs and unpredictability of user inputs.",
+            "Implement input validation and sanitization to ensure user input adheres to defined limits and filters out any malicious content.",
+            "Enforce API rate limits to restrict the number of requests an individual user or IP address can make within a specific timeframe.",
+            "Set strict input limits based on the LLM's context window to prevent overload and resource exhaustion."
+        ]
+    },
+    {
+        "id": "LLM05",
+        "name": "Supply Chain Vulnerabilities",
+        "link": "https://genai.owasp.org/llmrisk/llm05-supply-chain-vulnerabilities/",
+        "hints": [
+            "The supply chain in LLMs can be vulnerable, impacting the integrity of training data, ML models, and deployment platforms.",
+            "These vulnerabilities can lead to biased outcomes, security breaches, or even complete system failures.",
+            "Carefully vet data sources and suppliers, including T&Cs and their privacy policies, only using trusted suppliers.",
+            "Only use reputable plugins and ensure they have been tested for your application requirements.",
+            "Implement sufficient monitoring to cover component and environment vulnerabilities scanning, use of unauthorized plugins, and out-of-date components."
+        ]
+    },
+    {
+        "id": "LLM06",
+        "name": "Sensitive Information Disclosure",
+        "link": "https://genai.owasp.org/llmrisk/llm06-sensitive-information-disclosure/",
+        "hints": [
+            "LLM applications have the potential to reveal sensitive information, proprietary algorithms, or other confidential details through their output.",
+            "Incomplete or improper filtering of sensitive information in the LLM's responses can lead to unauthorized access to sensitive data, intellectual property, and privacy violations.",
+            "Integrate adequate data sanitization and scrubbing techniques to prevent user data from entering the training model data.",
+            "Implement robust input validation and sanitization methods to identify and filter out potential malicious inputs to prevent the model from being poisoned.",
+            "Apply strict access control methods to external data sources and a rigorous approach to maintaining a secure supply chain."
+        ]
+    },
+    {
+        "id": "LLM07",
+        "name": "Insecure Plugin Design",
+        "link": "https://genai.owasp.org/llmrisk/llm07-insecure-plugin-design/",
+        "hints": [
+            "LLM plugins are extensions that, when enabled, are called automatically by the model during user interactions.",
+            "Inadequate access control allows a plugin to blindly trust other plugins and assume that the end user provided the inputs, enabling malicious inputs to have harmful consequences.",
+            "Plugins should enforce strict parameterized input wherever possible and include type and range checks on inputs.",
+            "Plugin developers should apply OWASP's recommendations in ASVS (Application Security Verification Standard) to ensure adequate input validation and sanitization.",
+            "Require manual user authorization and confirmation of any action taken by sensitive plugins."
+        ]
+    },
+    {
+        "id": "LLM08",
+        "name": "Excessive Agency",
+        "link": "https://genai.owasp.org/llmrisk/llm08-excessive-agency/",
+        "hints": [
+            "An LLM-based system is often granted a degree of agency by its developer - the ability to interface with other systems and undertake actions in response to a prompt.",
+            "Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected/ambiguous outputs from an LLM.",
+            "Limit the plugins/tools that LLM agents are allowed to call to only the minimum functions necessary.",
+            "Limit the permissions that LLM plugins/tools are granted to other systems to the minimum necessary in order to limit the scope of undesirable actions.",
+            "Utilize human-in-the-loop control to require a human to approve all actions before they are taken."
+        ]
+    },
+    {
+        "id": "LLM09",
+        "name": "Overreliance",
+        "link": "https://genai.owasp.org/llmrisk/llm09-overreliance/",
+        "hints": [
+            "Systems or people overly depending on LLMs without oversight may face misinformation, miscommunication, legal issues, and security vulnerabilities due to incorrect or inappropriate content generated by LLMs.",
+            "LLM-generated source code can introduce unnoticed security vulnerabilities, posing a significant risk to the operational safety and security of applications.",
+            "Regularly monitor and review the LLM outputs, using self-consistency or voting techniques to filter out inconsistent text.",
+            "Cross-check the LLM output with trusted external sources to ensure the information provided by the model is accurate and reliable.",
+            "Implement automatic validation mechanisms that can cross-verify the generated output against known facts or data."
+        ]
+    },
+    {
+        "id": "LLM10",
+        "name": "Model Theft",
+        "link": "https://genai.owasp.org/llmrisk/llm10-model-theft/",
+        "hints": [
+            "This involves unauthorized access and exfiltration of proprietary LLM models, leading to economic losses, compromised competitive advantage, and potential access to sensitive information.",
+            "An attacker exploits a vulnerability in a company's infrastructure to gain unauthorized access to their LLM model repository via misconfiguration in their network or application security settings.",
+            "Implement strong access controls (E.G., RBAC and rule of least privilege) and strong authentication mechanisms to limit unauthorized access to LLM model repositories and training environments.",
+            "Restrict the LLM's access to network resources, internal services, and APIs to control what the LLM application has access to and thus could be a mechanism or prevention step to prevent side-channel attacks.",
+            "Regularly monitor and audit access logs and activities related to LLM model repositories to detect and respond to any suspicious or unauthorized behavior promptly."
+        ]
     }
 ]
