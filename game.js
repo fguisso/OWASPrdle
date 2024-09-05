@@ -19,11 +19,69 @@ async function fetchGameData() {
 }
 
 function populateAutocomplete() {
-    const datalist = document.getElementById('owasp-categories');
-    gameData.forEach(category => {
-        const option = document.createElement('option');
-        option.value = category.name;
-        datalist.appendChild(option);
+    const inp = document.getElementById("guess-input");
+    var currentFocus;
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        this.parentNode.appendChild(a);
+        for (i = 0; i < gameData.length; i++) {
+            if (gameData[i].name.substr(0, val.length).toUpperCase() == val.toUpperCase() || gameData[i].id.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                b = document.createElement("DIV");
+                b.innerHTML = "<span class='item-id'>" + gameData[i].id + "</span>";
+                b.innerHTML += "<span class='item-name'>" + gameData[i].name + "</span>";
+                b.innerHTML += "<input type='hidden' value='" + gameData[i].name + "'>";
+                b.addEventListener("click", function(e) {
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    closeAllLists();
+                });
+                a.appendChild(b);
+            }
+        }
+    });
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+            currentFocus++;
+            addActive(x);
+        } else if (e.keyCode == 38) {
+            currentFocus--;
+            addActive(x);
+        } else if (e.keyCode == 13) {
+            e.preventDefault();
+            if (currentFocus > -1) {
+                if (x) x[currentFocus].click();
+            }
+        }
+    });
+    function addActive(x) {
+        if (!x) return false;
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+        for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+        }
+    }
+    function closeAllLists(elmnt) {
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+        }
+    }
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
     });
 }
 
@@ -39,6 +97,7 @@ function startNewRound() {
     document.getElementById('new-game').style.display = 'none';
     previousGuesses = [];
     updatePreviousGuesses();
+    revealHint();
 }
 
 function revealHint() {
@@ -46,9 +105,9 @@ function revealHint() {
         const hintElement = document.createElement('p');
         hintElement.textContent = currentCategory.hints[revealedHints];
         document.getElementById('hints').appendChild(hintElement);
+        if (revealedHints != 0) score -= 50;
         revealedHints++;
         document.getElementById('hints-count').textContent = revealedHints;
-        score -= 50;
         updateScore();
     }
     if (revealedHints === 5) {
@@ -57,26 +116,38 @@ function revealHint() {
 }
 
 function checkGuess() {
-    const guess = document.getElementById('guess-input').value.trim();
-    const correctAnswer = currentCategory.name;
+    const guessInput = document.getElementById('guess-input');
+    const guess = guessInput.value.trim();
     const feedback = document.getElementById('feedback');
 
-    if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
-        // Display the correct guess with a clickable link
-        feedback.innerHTML = `Correct! Well done! Learn more about it <a href="${currentCategory.link}" target="_blank">${currentCategory.id}</a>`;
-        feedback.className = 'win';
-        document.getElementById('submit-guess').disabled = true;
-        document.getElementById('reveal-hint').disabled = true;
-        document.getElementById('new-game').style.display = 'block';
+    if (isValidGuess(guess)) {
+        const correctAnswer = currentCategory.name;
+
+        if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
+            // Display the correct guess with a clickable link
+            feedback.innerHTML = `Correct! Well done! Learn more about it <a href="${currentCategory.link}" target="_blank">${currentCategory.id}</a>`;
+            feedback.className = 'win';
+            document.getElementById('submit-guess').disabled = true;
+            document.getElementById('reveal-hint').disabled = true;
+            document.getElementById('new-game').style.display = 'block';
+        } else {
+            feedback.textContent = 'Incorrect. Try again or reveal another hint.';
+            feedback.className = 'lose';
+            score -= 100;
+            updateScore();
+            previousGuesses.push(guess);
+            updatePreviousGuesses();
+        }
+        guessInput.value = '';
+        guessInput.style.borderColor = ''; // Reset border color
     } else {
-        feedback.textContent = 'Incorrect. Try again or reveal another hint.';
+        feedback.textContent = 'Invalid guess. Please select an option from the list.';
         feedback.className = 'lose';
-        score -= 100;
-        updateScore();
-        previousGuesses.push(guess);
-        updatePreviousGuesses();
+        guessInput.style.borderColor = 'red';
     }
-    document.getElementById('guess-input').value = '';
+}
+function isValidGuess(guess) {
+    return gameData.some(category => category.name.toLowerCase() === guess.toLowerCase());
 }
 
 function updateScore() {
@@ -93,6 +164,17 @@ function updatePreviousGuesses() {
         guessesElement.appendChild(guessElement);
     });
 }
+
+const infoIcon = document.querySelector('.info-icon');
+const infoCard = document.querySelector('.info-card');
+
+infoIcon.addEventListener('mouseenter', () => {
+    infoCard.style.display = 'block';
+});
+
+infoIcon.addEventListener('mouseleave', () => {
+    infoCard.style.display = 'none';
+});
 
 // Event listeners
 document.getElementById('reveal-hint').addEventListener('click', revealHint);

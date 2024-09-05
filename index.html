@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OWASP Guessing Game</title>
     <style>
-        
         body {
             font-family: Arial, sans-serif;
             background-color: #1e1e1e;
             color: #ffffff;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -26,6 +26,29 @@
             width: 100%;
             max-width: 600px;
         }
+        .title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .info-icon {
+            margin-left: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        .info-card {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            width: 200px;
+            z-index: 1;
+        }
         .hint-card {
             background-color: #3d3d3d;
             border-radius: 5px;
@@ -39,15 +62,42 @@
             width: calc(100% - 22px);
             box-sizing: border-box;
         }
+        input {
+            background-color: #3d3d3d;
+            color: #ffffff;
+            border: 1px solid #555555;
+            border-radius: 20px;
+            padding-right: 30px;
+        }
+        input::placeholder {
+            color: #aaaaaa;
+        }
         button {
-            background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
+            border-radius: 20px;
         }
-        button:hover {
+        #submit-guess {
+            background-color: #4CAF50;
+        }
+        #submit-guess:hover {
             background-color: #45a049;
+        }
+        #reveal-hint {
+            background-color: #ffd700;
+            color: #333;
+        }
+        #reveal-hint:hover {
+            background-color: #ffcc00;
+        }
+        #new-game {
+            background-color: #4fc3f7;
+            color: #333;
+        }
+        #new-game:hover {
+            background-color: #3db2e5;
         }
         button:disabled {
             background-color: #cccccc;
@@ -57,9 +107,9 @@
             font-weight: bold;
             margin-top: 10px;
         }
-        #previous-guesses {
-            text-align: left;
-            margin-top: 20px;
+        #new-game {
+            display: none;
+            margin: 10px auto;
         }
         .wrong-guess {
             color: #ff6b6b;
@@ -70,28 +120,126 @@
         .lose {
             color: #ff6b6b;
         }
-
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #aaaaaa;
+        }
+        footer a {
+            color: #4fc3f7;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .autocomplete {
+            position: relative;
+            display: inline-block;
+            width: 80%;
+        }
+        .autocomplete-input {
+            width: 100%;
+            padding: 10px 30px 10px 15px;
+            border-radius: 20px;
+            border: 1px solid #555555;
+            background-color: #3d3d3d;
+            color: #ffffff;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .autocomplete-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.5);
+        }
+        .dropdown-arrow {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #ffffff;
+            pointer-events: none;
+        }
+        .autocomplete-items {
+            position: absolute;
+            border: 1px solid #555555;
+            border-top: none;
+            z-index: 99;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #3d3d3d;
+            border-radius: 0 0 20px 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .autocomplete-items div {
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #3d3d3d;
+            border-bottom: 1px solid #555555;
+            transition: background-color 0.2s;
+        }
+        .autocomplete-items div:last-child {
+            border-radius: 0 0 20px 20px;
+            border-bottom: none;
+        }
+        .autocomplete-items div:hover {
+            background-color: #4d4d4d;
+        }
+        .autocomplete-active {
+            background-color: #4fc3f7 !important;
+            color: #ffffff;
+        }
+        .autocomplete-items .item-id {
+            font-weight: bold;
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="game-container">
-        <h1>OWASP Guessing Game</h1>
-        <div class="hint-card">
-            <h3>Hints:</h3>
-            <div id="hints"></div>
+        <div class="title-container">
+            <h1>OWASP Guessing Game</h1>
+            <div class="info-icon">
+                ❓
+                <div class="info-card">
+                    Guess the OWASP category based on the hints provided. Reveal hints to get more information, but be aware that each hint reduces your score. Type your guess and select from the autocomplete options. We are using the following lists: 
+                        <ul>
+                            <li>OWASP Top 10 2021</li>
+                            <li>OWASP Top 10 Mobile 2023</li>
+                            <li>Top 10 API 2023</li>
+                            <li>OWASP Top 10 LLM 1.1.0</li>
+                        </ul>
+                </div>
+            </div>
         </div>
-        <input type="text" id="guess-input" list="owasp-categories" placeholder="Enter your guess">
-        <datalist id="owasp-categories"></datalist>
+        <div class="autocomplete">
+            <input type="text" id="guess-input" list="owasp-categories" placeholder="Start typing your guess">
+            <div class="dropdown-arrow"></div>
+        </div>
         <button id="submit-guess">Submit Guess</button>
         <button id="reveal-hint">Reveal Next Hint</button>
         <button id="new-game" style="display: none;">Start New Game</button>
         <p id="feedback"></p>
+        <div class="hint-card">
+            <h3>Hints:</h3>
+            <div id="hints"></div>
+        </div>
         <p>Hints Revealed: <span id="hints-count">0</span>/5</p>
         <p>Score: <span id="score">1000</span></p>
         <div id="previous-guesses"></div>
     </div>
+    <footer>
+        Created by Guisso with help from Claude. Inspired by <a href="https://lude.rs/CWErdle/" target="_blank">CWErdle</a>.<br>
+        Original code on GitHub: <a href="https://github.com/guisso/OWASPrdle" target="_blank">OWASPrdle</a>
+    </footer>
 
-    <!-- Include the JavaScript file -->
-    <script src="game.js" async></script>
+    <script src="./game.js"></script>
 </body>
 </html>
