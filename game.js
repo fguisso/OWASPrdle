@@ -44,6 +44,28 @@ function populateAutocomplete() {
             }
         }
     });
+    inp.addEventListener("click", function(e) {
+        if (!this.value) {
+            var a, b, i;
+            closeAllLists();
+            currentFocus = -1;
+            a = document.createElement("DIV");
+            a.setAttribute("id", this.id + "autocomplete-list");
+            a.setAttribute("class", "autocomplete-items");
+            this.parentNode.appendChild(a);
+            for (i = 0; i < gameData.length; i++) {
+                b = document.createElement("DIV");
+                b.innerHTML = "<span class='item-id'>" + gameData[i].id + "</span>";
+                b.innerHTML += "<span class='item-name'>" + gameData[i].name + "</span>";
+                b.innerHTML += "<input type='hidden' value='" + gameData[i].name + "'>";
+                b.addEventListener("click", function(e) {
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    closeAllLists();
+                });
+                a.appendChild(b);
+            }
+        }
+    });
     inp.addEventListener("keydown", function(e) {
         var x = document.getElementById(this.id + "autocomplete-list");
         if (x) x = x.getElementsByTagName("div");
@@ -180,7 +202,6 @@ infoIcon.addEventListener('mouseleave', () => {
 document.getElementById('reveal-hint').addEventListener('click', revealHint);
 document.getElementById('submit-guess').addEventListener('click', checkGuess);
 document.getElementById('new-game').addEventListener('click', startNewRound);
-
 // Initialize the game after loading the data
 fetchGameData();
 
