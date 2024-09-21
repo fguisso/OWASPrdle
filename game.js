@@ -108,6 +108,7 @@ function populateAutocomplete() {
 }
 
 function startNewRound() {
+    score = 1000;
     currentCategory = gameData[Math.floor(Math.random() * gameData.length)];
     revealedHints = 0;
     document.getElementById('hints').innerHTML = '';
